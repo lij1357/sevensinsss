@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社群七大</title>
+    <style>
+      
+        body {
+            font-family: serif;
+            background-color: #FFF8F0;
+            color: #4D0000;
+            text-align: center;
+            margin: 100;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h1 {
+            color: #4D0000;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+      .container {
+    display: flex;
+    flex-direction: column;
+    align-items: right; 
+   
+        justify-content: right; 
+        height: 100vh; 
+    width: 300%; 
+}
+        .question {
+            font-size: 36px;
+            margin: 200 px ;
+          text-align: space-between;  
+    width: 100%;  
+    max-width: 800px; 
+        }
+        .options {
+            display: flex;
+            flex-direction: space-between;
+            gap: 10px;
+            width: 120%;
+            max-width: 800px;
+           align-items: center; 
+    margin: center; 
+        }
+        .options button {
+            background-color: #FFF8F0;
+            border: 2px solid #4D0000;
+            color: #4D0000;
+            padding: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            text-align: center;
+            width: 120%;
+          max-width: 400px
+          
+          <button id="option${index}" onclick="selectOption(${index})">${option.text}</button>
+
+        }
+        #result {
+            display: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        #result img {
+            width: 800px;
+            margin-top: 10px;
+        }
+      function selectOption(index) {
+   
+    document.querySelectorAll(".options button").forEach(btn => {
+        btn.style.backgroundColor = "#FFE6E6";
+    }
+        
+  
+
+    // 進入下一題
+    currentQuestion++;
+    setTimeout(() => {
+        if (currentQuestion < questions.length) {
+            showQuestion();
+        } else {
+            showResult();
+        }
+    }, 1000); // 1 秒後進入下一題
+}
+
+    </style>
+</head>
+<body onclick="startQuiz()">
+
+    <h1 id="title">關於你的社群七大罪</h1>
+    
+    <div id="quizContainer" style="display:none;">
+        <div id="questionBox"></div>
+        <div class="options" id="optionsBox"></div>
+    </div>
+
+    <div id="result">
+        <p>你的社群七大罪是：</p>
+        <img id="resultImage" src="" alt="測驗結果">
+    </div>
+
+    <script>
+        const questions = [
+            {
+                text: "我經常發布自己的成就或獎項，即使這些內容與我的朋友或追蹤者無關。",
+                options: [
+                    { text: "完全不符合 —— 我連畢業都懶得發文，誰管這些啊", score: { "Pride": 1 } },
+                    { text: "不太符合 —— 偶爾分享一下，但不會一直發", score: { "Pride": 2 } },
+                    { text: "普通 —— 如果是重要的成就，當然要讓大家知道", score: { "Pride": 3 } },
+                    { text: "符合 —— 每次有值得炫耀的事，我都會發一篇", score: { "Pride": 4 } },
+                    { text: "非常符合 —— 發文不夠，我還會設計一個限時動態專區來整理所有成就", score: { "Pride": 5 } }
+                ]
+            },
+          
+            {
+                text: "當我看到朋友在社群媒體上分享美好的生活時，我會覺得自己的生活相形見絀。",
+                options: [
+                    { text: "完全不符合 —— 我只關心自己的生活，別人的發文對我沒影響", score: { "Envy": 1 } },
+                    { text: "不太符合 —— 偶爾會有點比較，但不會太在意", score: { "Envy": 2 } },
+                    { text: "普通 —— 有時候會覺得自己過得太普通", score: { "Envy": 3 } },
+                    { text: "符合 —— 常常會覺得自己不夠好，開始懷疑人生", score: { "Envy": 4 } },
+                    { text: "非常符合 —— 每次看到別人炫耀生活，就覺得自己什麼都沒有", score: { "Envy": 5 } }
+                ]
+            },
+           {
+                text: "我會仔細選擇上傳的照片或貼文，以展現自己最好的一面，即使這並不完全符合現實",
+                options: [
+                    { text: "完全不符合 —— 拍完就上傳，連濾鏡都懶得用", score: { "Pride": 1 } },
+                    { text: "不太符合 —— 有時候會挑好看的，但不太修圖", score: { "Pride": 2 } },
+                    { text: "普通 —— 會選比較好看的，但也不會修太誇張", score: { "Pride": 3 } },
+                    { text: "符合 —— 基本要修圖和美肌，不能讓別人看到我的素顏", score: { "Pride": 4 } },
+                    { text: "非常符合 —— 修圖、構圖、調色一條龍服務，每張照片都是藝術品", score: { "Pride": 5 } }
+                ]
+            },
+          {
+                text: "如果我的貼文沒有獲得足夠的讚或回應，我會感到不滿，甚至考慮刪除它",
+                options: [
+                    { text: "完全不符合 —— 讚數和留言對我來說無所謂", score: { "Pride": 1 } },
+                    { text: "不太符合 —— 偶爾會有點在意，但不至於刪文", score: { "Pride": 2 } },
+                    { text: "普通 —— 會觀察一下，但也不會特別做什麼", score: { "Pride": 3 } },
+                    { text: "符合 —— 如果沒什麼反應，會考慮改標題或發動態補充", score: { "Pride": 4 } },
+                    { text: "非常符合 —— 讚數太低就直接刪掉，反正沒人看到", score: { "Pride": 5 } }
+                ]
+            },
+           {
+        "text": "我經常關注某些特定的人，主要是因為我想知道他們過得如何，而不是因為我真的喜歡他們的內容。",
+        "options": [
+            { "text": "完全不符合 —— 只會追蹤自己有興趣的內容，沒必要關注不喜歡的人", "score": { "Envy": 1 } },
+            { "text": "不太符合 —— 有時候會看看，但不會特別關心", "score": { "Envy": 2 } },
+            { "text": "普通 —— 會偶爾注意，但不會天天關注", "score": { "Envy": 3 } },
+            { "text": "符合 —— 會默默看完所有動態，甚至回顧舊貼文", "score": { "Envy": 4 } },
+            { "text": "非常符合 —— 已經開啟通知，隨時更新對方的一舉一動", "score": { "Envy": 5 } }
+        ]
+    },
+    {
+        "text": "當朋友的貼文比我的獲得更多關注時，我會感到有些失落或不平衡。",
+        "options": [
+            { "text": "完全不符合 —— 別人的讚數和我無關", "score": { "Envy": 1 } },
+            { "text": "不太符合 —— 會有點羨慕，但不會影響心情", "score": { "Envy": 2 } },
+            { "text": "普通 —— 會比較一下，但不會太過在意", "score": { "Envy": 3 } },
+            { "text": "符合 —— 會開始懷疑自己的貼文是不是不夠吸引人", "score": { "Envy": 4 } },
+            { "text": "非常符合 —— 會覺得很不公平，甚至想著下次一定要贏回來", "score": { "Envy": 5 } }
+        ]
+    },
+    {
+        "text": "我經常花大量時間滑社群媒體，卻沒有產出任何內容。",
+        "options": [
+            { "text": "完全不符合 —— 只會看自己感興趣的內容，不會浪費太多時間", "score": { "Sloth": 1 } },
+            { "text": "不太符合 —— 偶爾會滑太久，但會提醒自己控制", "score": { "Sloth": 2 } },
+            { "text": "普通 —— 有時候會滑到忘記時間，但還算能控制", "score": { "Sloth": 3 } },
+            { "text": "符合 —— 常常滑手機一整天，什麼事都沒做", "score": { "Sloth": 4 } },
+            { "text": "非常符合 —— 社群媒體就是我的日常，不滑會不自在", "score": { "Sloth": 5 } }
+        ]
+    },
+    {
+        "text": "我曾因為滑社群媒體，而拖延原本該做的事情。",
+        "options": [
+            { "text": "完全不符合 —— 該做的事情還是會優先完成", "score": { "Sloth": 1 } },
+            { "text": "不太符合 —— 偶爾會拖一下，但不至於影響重要事務", "score": { "Sloth": 2 } },
+            { "text": "普通 —— 會影響到一些小事，但還算能應付", "score": { "Sloth": 3 } },
+            { "text": "符合 —— 常常因為滑手機而耽誤重要的事情", "score": { "Sloth": 4 } },
+            { "text": "非常符合 —— 我拖延的原因幾乎都是社群媒體", "score": { "Sloth": 5 } }
+        ]
+      },
+           {
+        "text": "我會無意識地刷新社群媒體，即使剛剛已經看過最新內容。",
+        "options": [
+            { "text": "完全不符合 —— 看過就不會再點開，沒必要重複滑", "score": { "Sloth": 1 } },
+            { "text": "不太符合 —— 只有等人的回覆時，才會頻繁刷新", "score": { "Sloth": 2 } },
+            { "text": "普通 —— 偶爾會滑個幾次，但還算能控制", "score": { "Sloth": 3 } },
+            { "text": "符合 —— 幾乎不自覺地一直刷新，總覺得會有新東西", "score": { "Sloth": 4 } },
+            { "text": "非常符合 —— 我的手已經養成習慣，不滑會覺得焦慮", "score": { "Sloth": 6 } }
+        ]
+    },
+    {
+        "text": "我會在社群媒體上積極經營人脈，即使對方與我沒有太多交情。",
+        "options": [
+            { "text": "完全不符合 —— 只會加真正認識的人，沒興趣經營人脈", "score": { "Greed": 1 } },
+            { "text": "不太符合 —— 有時候會加陌生人，但不會刻意維持關係", "score": { "Greed": 2 } },
+            { "text": "普通 —— 會有一些不太熟的人，但不會主動經營", "score": { "Greed": 3 } },
+            { "text": "符合 —— 會主動聯繫對我有幫助的人，擴展人脈圈", "score": { "Greed": 4 } },
+            { "text": "非常符合 —— 只要是有價值的關係，我都會盡力維持", "score": { "Greed": 5 } }
+        ]
+    },
+    {
+        "text": "我會因為社群媒體上的活動（如抽獎、免費贈品）而關注許多我不在乎的帳號。",
+        "options": [
+            { "text": "完全不符合 —— 不會為了抽獎去追蹤沒興趣的帳號", "score": { "Greed": 1 } },
+            { "text": "不太符合 —— 偶爾會，但活動結束就會退追", "score": { "Greed": 2 } },
+            { "text": "普通 —— 有時候會追蹤，但不會影響使用習慣", "score": { "Greed": 3 } },
+            { "text": "符合 —— 追蹤很多帳號都是為了拿好處", "score": { "Greed": 4 } },
+            { "text": "非常符合 —— 我關注的帳號大多是因為有利可圖", "score": { "Greed": 5 } }
+        ]
+    },
+    {
+        "text": "我會羨慕那些靠社群媒體賺大錢的人，並希望自己也能做到。",
+        "options": [
+            { "text": "完全不符合 —— 社群媒體只是娛樂，沒想過靠這賺錢", "score": { "Greed": 1 } },
+            { "text": "不太符合 —— 會覺得很厲害，但不會特別想跟進", "score": { "Greed": 2 } },
+            { "text": "普通 —— 偶爾會想，卻沒有真正行動過", "score": { "Greed": 3 } },
+            { "text": "符合 —— 希望自己能變成社群網紅，享受這樣的收入", "score": { "Greed": 4 } },
+            { "text": "非常符合 —— 正在努力經營，希望能靠這賺大錢", "score": { "Greed": 5 } }
+        ]
+     },
+           {
+        "text": "我經常在社群媒體上分享自己吃了什麼，即使沒有人特別關心。",
+        "options": [
+            { "text": "完全不符合 —— 吃飯就是吃飯，沒必要特別發文", "score": { "Gluttony": 1 } },
+            { "text": "不太符合 —— 偶爾會發，但不會每餐都拍照", "score": { "Gluttony": 2 } },
+            { "text": "普通 —— 會發自己覺得特別的餐點", "score": { "Gluttony": 3 } },
+            { "text": "符合 —— 幾乎每次吃飯都會拍照分享", "score": { "Gluttony": 4 } },
+            { "text": "非常符合 —— 有一個專門記錄美食的相簿，連吃什麼都要策劃好", "score": { "Gluttony": 5 } }
+        ]
+    },
+    {
+        "text": "我曾經因為美食帳號的推薦，而衝動購買食物或外送。",
+        "options": [
+            { "text": "完全不符合 —— 我吃東西只考慮自己想吃的，不受影響", "score": { "Gluttony": 1 } },
+            { "text": "不太符合 —— 偶爾會被影響，但還算理性", "score": { "Gluttony": 2 } },
+            { "text": "普通 —— 看到推薦會考慮，但不會每次都買", "score": { "Gluttony": 3 } },
+            { "text": "符合 —— 會因為美食分享而想去試試看", "score": { "Gluttony": 4 } },
+            { "text": "非常符合 —— 幾乎都是看推薦決定吃什麼", "score": { "Gluttony": 5 } }
+        ]
+    },
+    {
+        "text": "我在社群媒體上追蹤許多與食物相關的帳號，甚至比朋友還多。",
+        "options": [
+            { "text": "完全不符合 —— 主要關注的是朋友或其他興趣，不會特別追蹤美食帳號", "score": { "Gluttony": 1 } },
+            { "text": "不太符合 —— 追蹤一些，但不算很多", "score": { "Gluttony": 2 } },
+            { "text": "普通 —— 美食帳號跟朋友的比例差不多", "score": { "Gluttony": 3 } },
+            { "text": "符合 —— 追蹤很多美食帳號，幾乎每天都在看", "score": { "Gluttony": 4 } },
+            { "text": "非常符合 —— 朋友都沒幾個，社群媒體就是我的美食指南", "score": { "Gluttony": 5 } }
+        ]
+     },
+           {
+        "text": "我會在社群媒體上關注大量的顏值網紅或明星，主要是因為他們的外表吸引我。",
+        "options": [
+            { "text": "完全不符合 —— 社群媒體主要用來關注資訊，外表不是關鍵", "score": { "Lust": 1 } },
+            { "text": "不太符合 —— 會關注一些，但不會特別因為顏值追蹤", "score": { "Lust": 2 } },
+            { "text": "普通 —— 如果對方有趣又好看，會考慮追蹤", "score": { "Lust": 3 } },
+            { "text": "符合 —— 會專門找好看的帳號關注", "score": { "Lust": 4 } },
+            { "text": "非常符合 —— 追蹤清單裡幾乎都是長得好看的人", "score": { "Lust": 5 } }
+        ]
+    },
+    {
+        "text": "我曾經因為對某個人有興趣，而不斷翻閱他過去的貼文或照片。",
+        "options": [
+            { "text": "完全不符合 —— 只會關心最近的動態，不會刻意翻舊貼文", "score": { "Lust": 1 } },
+            { "text": "不太符合 —— 偶爾會看一下，但不會特別深入", "score": { "Lust": 2 } },
+            { "text": "普通 —— 有時候會翻，但不會太頻繁", "score": { "Lust": 3 } },
+            { "text": "符合 —— 會翻到對方很久以前的內容", "score": { "Lust": 4 } },
+            { "text": "非常符合 —— 甚至不小心點讚了對方好幾年前的貼文", "score": { "Lust": 5 } }
+        ]
+    },
+    {
+        "text": "我會利用社群媒體來認識新的人，並與他們建立曖昧關係。",
+        "options": [
+            { "text": "完全不符合 —— 不會用社群媒體來談戀愛或曖昧", "score": { "Lust": 1 } },
+            { "text": "不太符合 —— 會認識新朋友，但不會刻意經營曖昧", "score": { "Lust": 2 } },
+            { "text": "普通 —— 有時候會小聊，但不會太深入", "score": { "Lust": 3 } },
+            { "text": "符合 —— 會透過社群媒體與有興趣的人互動", "score": { "Lust": 4 } },
+            { "text": "非常符合 —— 社群媒體就是我的曖昧發展場", "score": { "Lust": 5 } }
+        ]
+    }
+          
+        ];
+
+        const results = {
+            "Envy": "https://imgur.com/vklnzUE.png",
+            "Gluttony": "https://imgur.com/jiMpdKP.png",
+            "Lust": "https://imgur.com/r9WvKXK.png",
+            "Pride": "https://imgur.com/V4HH5Ox.png",
+            "Greed": "https://imgur.com/hRruW73.png",
+            "Sloth": "https://imgur.com/SfXKDHY.png",
+            "Wrath": "https://imgur.com/K35AUFA.png"
+        };
+
+        let currentQuestion = 0;
+        let scores = {
+            "Envy": 0, "Gluttony": 0, "Lust": 0,
+            "Pride": 0, "Greed": 0, "Sloth": 0, "Wrath": 0
+        };
+
+        function startQuiz() {
+            document.body.onclick = null; // 避免後續誤觸
+            document.getElementById("title").style.display = "none";
+            document.getElementById("quizContainer").style.display = "block";
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const questionData = questions[currentQuestion];
+            document.getElementById("questionBox").innerHTML = `<p class="question">${questionData.text}</p>`;
+            document.getElementById("optionsBox").innerHTML = questionData.options.map((option, index) =>
+                `<button onclick="selectOption(${index})">${option.text}</button>`
+            ).join("");
+        }
+
+        function selectOption(index) {
+            const selectedOption = questions[currentQuestion].options[index];
+
+            // 累積分數
+            for (const sin in selectedOption.score) {
+                scores[sin] += selectedOption.score[sin];
+            }
+
+            // 進入下一題或顯示結果
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function showResult() {
+            document.getElementById("quizContainer").style.display = "none";
+            document.getElementById("result").style.display = "block";
+
+            // 找出得分最高的罪
+            const maxSin = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+            document.getElementById("resultImage").src = results[maxSin];
+        }
+    </script>
+
+</body>
+</html>
